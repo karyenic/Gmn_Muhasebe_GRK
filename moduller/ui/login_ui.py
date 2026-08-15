@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QLabel, QComboBox, QLineEdit, QPushButton, QMessageBox, QFrame
+import os
 from PyQt5.QtGui import QFont
+import os
 from PyQt5.QtCore import Qt
+import os
 
 class LoginWindow(QDialog):
     def __init__(self, db, cb):
@@ -35,13 +38,13 @@ class LoginWindow(QDialog):
 
         self.cmb_f = QComboBox()
         self.cmb_f.setStyleSheet("padding: 8px; font-size: 10pt;")
+
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         self.f_map = {
-            "FIRMA01 - GMN Otomotiv San. Tic.": r"C:\Gmn_Muhasebe\data\firma01.db",
-            "FIRMA02 - CMN Otomotiv Ltd. Şti.": r"C:\Gmn_Muhasebe\data\firma02.db"
+            "FIRMA01 - GMN Otomotiv San. Tic.": os.path.join(base_dir, "Data", "firma01.db"),
+            "FIRMA02 - CMN Otomotiv Ltd. Şti.": os.path.join(base_dir, "Data", "firma02.db")
         }
         self.cmb_f.addItems(self.f_map.keys())
-
-        self.cmb_yil = QComboBox()
         self.cmb_yil.setStyleSheet("padding: 8px; font-size: 10pt;")
         self.cmb_yil.addItems(["2026", "2025"])
 
@@ -87,3 +90,4 @@ class LoginWindow(QDialog):
                 self.accept()
             else:
                 QMessageBox.warning(self, "Hata", "Kullanıcı adı veya şifre hatalı!")
+

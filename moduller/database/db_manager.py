@@ -2,12 +2,12 @@ import sqlite3
 import os
 
 class DBManager:
-    def __init__(self, db_path=r"C:\Gmn_Muhasebe\data\firma01.db"):
-        self.db_path = db_path
-        os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
-        self.init_db()
-
-    def set_active_db(self, db_path):
+    def __init__(self, db_path=None):
+        if db_path is None:
+            # Proje kök dizinine göre relative yol
+            base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+            db_path = os.path.join(base_dir, "Data", "firma01.db")
+        
         self.db_path = db_path
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.init_db()
@@ -53,3 +53,4 @@ class DBManager:
         columns = [row['name'] for row in cursor.fetchall()]
         if column not in columns:
             cursor.execute(f"ALTER TABLE {table} ADD COLUMN {column} {col_type}")
+
