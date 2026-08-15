@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Sanal ortamlar
+.venv/
+venv/
+env/
+ENV/
+
+# Ortam dosyaları
+.env
+.env.*
+!.env.example
+
+# Veritabanı dosyaları (ÖNEMLİ)
+Data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Log ve geçici
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Windows / macOS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Yedekler
+backups/
+*.zip
